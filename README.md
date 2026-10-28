@@ -12,6 +12,10 @@ py -m http.server 8000
 
 Después abre `http://localhost:8000`. No se requieren dependencias de JavaScript. El MP3 se carga desde `./凡愚 (feat. 知声).mp3`; el MP4 original se conserva en la raíz, pero no se presenta como fondo ni se necesita para ejecutar la obra.
 
+## Publicar en GitHub Pages
+
+El workflow [`.github/workflows/pages.yml`](./.github/workflows/pages.yml) publica el sitio y sus recursos estáticos al hacer push a `main`, o manualmente desde la pestaña **Actions**. En la configuración del repositorio, selecciona **Settings → Pages → Build and deployment → Source: GitHub Actions**. Tras la primera ejecución correcta, la dirección del sitio aparece en el deployment del workflow y en la sección **Pages**.
+
 ## Arquitectura y algoritmos
 
 - **`Agent.js`** separa percepción, cálculo de acción, integración física y dibujo. Cada agente mantiene posición, velocidad, aceleración, velocidad y fuerza máximas, estado de wander y una vecindad local. Seek, arrive, wander y separation calculan fuerzas de dirección; la suma se limita antes de integrarla.
