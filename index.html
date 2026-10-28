@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#081115">
+    <meta name="description" content="Instrumento visual generativo de agentes autónomos para interpretar 凡愚 / 知声.">
+    <title>知声 — Instrumento visual</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="stage" aria-label="Instrumento visual interactivo">
+      <canvas id="instrument" aria-label="Campo de agentes autónomos y rastros"></canvas>
+
+      <header class="masthead">
+        <p class="eyebrow">INSTRUMENTO VISUAL · SIMULACIÓN 06</p>
+        <h1>知声 <span>/</span> <em>凡愚</em></h1>
+        <p class="caption">Una ecología de dirección, encuentro y memoria · <a id="video-reference" target="_blank" rel="noopener noreferrer">videoclip ↗</a></p>
+      </header>
+
+      <section class="transport" aria-label="Reproducción de referencia">
+        <button id="audio-toggle" class="icon-button" type="button" aria-label="Reproducir canción" title="Reproducir / pausar canción">▶</button>
+        <div class="track">
+          <span class="track-name">isonosuke — 凡愚 (feat. 知声)</span>
+          <span id="audio-status" class="status" role="status">Canción lista</span>
+        </div>
+        <label class="volume-control" for="volume">
+          <span>VOL</span>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.65" aria-label="Volumen">
+        </label>
+      </section>
+
+      <section class="controls" aria-label="Controles de interpretación">
+        <button id="modifiers-toggle" class="modifiers-toggle" type="button" aria-expanded="true" aria-controls="modifier-controls">Ocultar modificadores <kbd>H</kbd></button>
+        <div id="modifier-controls" class="modifier-controls">
+        <div class="scene-control">
+          <span class="section-label">ESCENA <output id="scene-value">紫 / Violeta</output></span>
+          <button id="scene-next" class="wide-button" type="button">Cambiar escena <kbd>M</kbd></button>
+        </div>
+        <div class="preset-control">
+          <span class="section-label">ESTADO · CAMBIO RADICAL <output id="preset-value">静 / Suspensión</output></span>
+          <div class="preset-buttons" role="group" aria-label="Presets de interpretación">
+            <button type="button" data-preset="still" aria-pressed="true" title="Atajo Q">静 <span>Suspensión</span></button>
+            <button type="button" data-preset="surge" aria-pressed="false" title="Atajo W">奔 <span>Oleada</span></button>
+            <button type="button" data-preset="fracture" aria-pressed="false" title="Atajo E">断 <span>Fractura</span></button>
+            <button type="button" data-preset="burst" aria-pressed="false" title="Atajo T">爆 <span>Estallido</span></button>
+          </div>
+        </div>
+        <div class="gesture-control">
+          <span class="section-label">GESTO <output id="tool-value">Convocar</output></span>
+          <div class="tool-buttons" role="group" aria-label="Herramientas de gesto">
+            <button type="button" data-tool="attract" aria-pressed="true" title="Atajo 1">凡 <span>Convocar</span></button>
+            <button type="button" data-tool="repel" aria-pressed="false" title="Atajo 2">愚 <span>Dispersar</span></button>
+            <button type="button" data-tool="seed" aria-pressed="false" title="Atajo 3">知 <span>Sembrar</span></button>
+            <button type="button" data-tool="rotate" aria-pressed="false" title="Atajo 4">声 <span>Girar</span></button>
+          </div>
+        </div>
+        <label class="control">
+          <span>ENERGÍA <output id="energy-value">48</output></span>
+          <input id="energy" type="range" min="0" max="1" step="0.01" value="0.48">
+        </label>
+        <label class="control">
+          <span>AGRUPACIÓN <output id="grouping-value">42</output></span>
+          <input id="grouping" type="range" min="0" max="1" step="0.01" value="0.42">
+        </label>
+        <label class="control">
+          <span>MEMORIA <output id="memory-value">56</output></span>
+          <input id="memory" type="range" min="0" max="1" step="0.01" value="0.56">
+        </label>
+        <label class="control">
+          <span>ALCANCE <output id="reach-value">44</output></span>
+          <input id="reach" type="range" min="0.12" max="1" step="0.01" value="0.44">
+        </label>
+        <div class="control direction-control">
+          <span>DIRECCIÓN <output id="direction-value">−90°</output></span>
+          <div class="direction-buttons">
+            <button id="turn-left" type="button" aria-label="Girar campo a la izquierda">↶</button>
+            <button id="turn-right" type="button" aria-label="Girar campo a la derecha">↷</button>
+          </div>
+        </div>
+        <div class="transport-actions">
+          <button id="pause-toggle" type="button">Pausar</button>
+          <button id="reset" type="button">Reiniciar</button>
+        </div>
+        </div>
+      </section>
+
+      <footer class="legend">
+        <span>Arrastra un kanji por la ventana para aplicar el gesto</span>
+        <span>Rueda: escala del campo</span>
+        <span>1–4: gesto · M: escena · Q/W/E/T: estado radical</span>
+        <span>←/→: dirección · H: mostrar/ocultar controles · Espacio: pausa · R: reinicio</span>
+      </footer>
+
+      <div id="pointer-hint" class="pointer-hint" aria-hidden="true">ARRASTRA PARA CONVOCAR</div>
+    </main>
+
+    <audio id="song" preload="metadata" src="./凡愚 (feat. 知声).mp3"></audio>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
